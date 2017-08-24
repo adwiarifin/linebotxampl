@@ -1,0 +1,16 @@
+{
+    "name": "adwiarifin/linebotxampl",
+    "description": "Simple line bot using php slim framework",
+    "type": "Project",
+    "require": {
+        "php": "^7.1",
+        "slim/slim": "^3.8",
+        "linecorp/line-bot-sdk": "^2.2"
+    },
+    "authors": [
+        {
+            "name": "Adwi Arifin",
+            "email": "adwiarifin@gmail.com"
+        }
+    ]
+}
