@@ -62,12 +62,10 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
             {
                 if($event['message']['type'] == 'text')
                 {
-                    $replyToken = $event['replyToken'];
-
                     // send same message as reply to user
                     //$result = $bot->replyText($event['replyToken'], $event['message']['text']);
 
-                    $textMessageBuilder1 = new TextMessageBuilder('ini pesan balasan pertama');
+                    $textMessageBuilder1 = new TextMessageBuilder('pesan asli: '. $event['message']['text']);
                     $textMessageBuilder2 = new TextMessageBuilder('ini pesan balasan kedua');
                     $stickerMessageBuilder = new StickerMessageBuilder(1, 106);
 
@@ -76,7 +74,7 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                     $multiMessageBuilder->add($textMessageBuilder2);
                     $multiMessageBuilder->add($stickerMessageBuilder);
 
-                    $result = $bot->replyMessage($replyToken, $multiMessageBuilder);
+                    $result = $bot->replyMessage($event['replyToken'], $textMessageBuilder1);
 
                     return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
                 }
