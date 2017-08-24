@@ -74,7 +74,7 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                     $multiMessageBuilder->add($textMessageBuilder2);
                     $multiMessageBuilder->add($stickerMessageBuilder);
 
-                    $result = $bot->replyMessage($event['replyToken'], $stickerMessageBuilder);
+                    $result = $bot->replyMessage($event['replyToken'], $multiMessageBuilder);
 
                     return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
                 }
